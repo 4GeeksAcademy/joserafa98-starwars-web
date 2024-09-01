@@ -12,7 +12,7 @@ const StarshipCards = () => {
     }, [actions]);
 
     return (
-        <div className="row">
+        <div className="container">
             <h1>Starships</h1>
             <div className="row flex-nowrap" style={{ overflowX: "auto", maxWidth: "100vw" }}>
             {store.starships && store.starships.length > 0 ? (

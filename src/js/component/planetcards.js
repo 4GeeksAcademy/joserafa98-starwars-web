@@ -10,7 +10,7 @@ const PlanetCards = () => {
     }, [actions]);
 
     return (
-        <div className="row" style={{ overflowX: "scroll" }}>
+        <div className="container">
             <h1>Planets</h1>
             <div className="row flex-nowrap" style={{ overflowX: "auto", maxWidth: "100vw" }}>
             {store.planets && store.planets.length > 0 ? (
