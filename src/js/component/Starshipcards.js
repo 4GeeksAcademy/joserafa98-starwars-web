@@ -1,44 +1,46 @@
+// src/component/Starshipcards.js
+
 import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-const PlanetCards = () => {
+const StarshipCards = () => {
     const { store, actions } = useContext(Context);
 
     useEffect(() => {
-        actions.loadPlanets(); 
+        actions.loadStarships(); 
     }, [actions]);
 
     return (
         <div className="row" style={{ overflowX: "scroll" }}>
-            {store.planets && store.planets.length > 0 ? (
-                store.planets.map((planet, index) => ( 
+            {store.starships && store.starships.length > 0 ? (
+                store.starships.map((starship, index) => (
                     <div key={index} className="card" style={{ width: "18rem" }}>
                         <img
-                            src={`https://starwars-visualguide.com/assets/img/planets/${planet.uid}.jpg`} 
+                            src={`https://starwars-visualguide.com/assets/img/starships/${starship.uid}.jpg`} 
                             className="card-img-top"
-                            alt={planet.properties ? planet.properties.name : "Planet Image"}  
+                            alt={starship.properties.name}
                         />
                         <div className="card-body">
-                            <h5 className="card-title">{planet.properties ? planet.properties.name : "Planet Name"}</h5>
+                            <h5 className="card-title">{starship.properties.name}</h5>
                             <p className="card-text">
-                                Some details about {planet.properties ? planet.properties.name : "the planet"}.
+                                Some details about {starship.properties.name}.
                             </p>
-                            <Link to={`/aboutplanets/${planet.uid}`} className="btn btn-primary">
+                            <Link to={`/aboutstarships/${starship.uid}`} className="btn btn-primary">
                                 Learn More
                             </Link>
-                            <button className="btn btn-warning" onClick={() => actions.addCharacterFavorites(planet)}>
+                            <button className="btn btn-warning" onClick={() => actions.addCharacterFavorites(starship)}>
                                 <i className="fa-regular fa-heart"></i>
                             </button>
                         </div>
                     </div>
                 ))
             ) : (
-                <div>Loading planets...</div>
+                <div>Loading starships...</div> 
             )}
         </div>
     );
 };
 
-export default PlanetCards;
+export default StarshipCards;
 

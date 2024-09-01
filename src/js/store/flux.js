@@ -60,6 +60,50 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error("Error fetching characters:", error);
 				}
 			},
+			loadPlanets: async () => {
+				try {
+					const response = await fetch('https://www.swapi.tech/api/planets/');
+					if (!response.ok) throw new Error("Failed to fetch planets list");
+			
+					const data = await response.json();
+					const results = data.results;
+					console.log('Results:', results);
+			
+					const planetPromises = results.map(async (result) => {
+						const planetResponse = await fetch(`https://www.swapi.tech/api/planets/${result.uid}`);
+						if (!planetResponse.ok) throw new Error(`Failed to fetch planet with uid: ${result.uid}`);
+			
+						const planetData = await planetResponse.json();
+						return planetData.result;
+					});
+			
+					const planets = await Promise.all(planetPromises);
+					console.log('Planets:', planets);
+			
+					setStore({ planets });
+				} catch (error) {
+					console.error("Error fetching planets:", error);
+				}
+			},
+			loadStarships: async () => {
+				try {
+					const response = await fetch('https://www.swapi.tech/api/starships');
+					const data = await response.json();
+					const results = data.results;
+			
+					const starshipPromises = results.map(async (result) => {
+						const starshipResponse = await fetch(`https://www.swapi.tech/api/starships/${result.uid}`);
+						const starshipData = await starshipResponse.json();
+						return starshipData.result;
+					});
+			
+					const starships = await Promise.all(starshipPromises);
+					setStore({ starships });
+				} catch (error) {
+					console.error("Error fetching starships:", error);
+				}
+			},
+			
 			addCharacterFavorites: (character) => {
                 const store = getStore();
                 if (!store.favorites.some(fav => fav.uid === character.uid)) {
