@@ -13,6 +13,7 @@ const StarshipCards = () => {
 
     return (
         <div className="row" style={{ overflowX: "scroll" }}>
+            <h1>Starships</h1>
             {store.starships && store.starships.length > 0 ? (
                 store.starships.map((starship, index) => (
                     <div key={index} className="card" style={{ width: "18rem" }}>
@@ -23,9 +24,8 @@ const StarshipCards = () => {
                         />
                         <div className="card-body">
                             <h5 className="card-title">{starship.properties.name}</h5>
-                            <p className="card-text">
-                                Some details about {starship.properties.name}.
-                            </p>
+                            <p className="card-text">Model: {starship.properties.model || "Unknown"}</p>
+                            <p className="card-text">Manufacturer: {starship.properties.manufacturer || "Unknown"}</p>
                             <Link to={`/aboutstarships/${starship.uid}`} className="btn btn-primary">
                                 Learn More
                             </Link>

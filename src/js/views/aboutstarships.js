@@ -28,19 +28,10 @@ const AboutStarships = () => {
                 </div>
                 <div className="content-wrapper">
                     <h1 className="display-4">{starship.properties.name}</h1>
+                    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h2>
                     <p className="lead">Model: {starship.properties.model || "Unknown"}</p>
                     <p className="lead">Manufacturer: {starship.properties.manufacturer || "Unknown"}</p>
                     <p className="lead">Cost: {starship.properties.cost_in_credits || "Unknown"}</p>
-                    <hr className="my-4" />
-                    <p>Find out more about what we offer by clicking below.</p>
-                    <a className="btn btn-primary btn-lg" href="#" role="button">
-                        Learn More
-                    </a>
-                </div>
-                <div className="content-bumper">
-                    <div className="content-info">
-                        <p>Published on: <span>August 28, 2024</span></p>
-                    </div>
                 </div>
             </div>
         </div>

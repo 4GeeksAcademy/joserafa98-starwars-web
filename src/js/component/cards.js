@@ -11,6 +11,7 @@ const StarwarsCards = () => {
 
     return (
         <div className="row" style={{ overflowX: "scroll" }}>
+            <h1>Characters</h1>
             {store.characters && store.characters.length > 0 ? (
                 store.characters.map((character, index) => (
                     <div key={index} className="card" style={{ width: "18rem" }}>
@@ -22,7 +23,10 @@ const StarwarsCards = () => {
                         <div className="card-body">
                             <h5 className="card-title">{character.properties.name}</h5>
                             <p className="card-text">
-                                Some details about {character.properties.name}.
+                                Height: {character.properties.height || "Unknown"}
+                            </p>
+                            <p className="card-text">
+                                Gender: {character.properties.gender || "Unknown"}
                             </p>
                             <Link to={`/about/${character.uid}`} className="btn btn-primary">
                                 Learn More

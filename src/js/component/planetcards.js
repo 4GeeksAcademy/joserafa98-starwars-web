@@ -11,6 +11,7 @@ const PlanetCards = () => {
 
     return (
         <div className="row" style={{ overflowX: "scroll" }}>
+            <h1>Planets</h1>
             {store.planets && store.planets.length > 0 ? (
                 store.planets.map((planet, index) => ( 
                     <div key={index} className="card" style={{ width: "18rem" }}>
@@ -22,7 +23,10 @@ const PlanetCards = () => {
                         <div className="card-body">
                             <h5 className="card-title">{planet.properties ? planet.properties.name : "Planet Name"}</h5>
                             <p className="card-text">
-                                Some details about {planet.properties ? planet.properties.name : "the planet"}.
+                                Climate: {planet.properties.climate || "Unknown"}
+                            </p>
+                            <p className="card-text">
+                                Population: {planet.properties.population || "Unknown"}
                             </p>
                             <Link to={`/aboutplanets/${planet.uid}`} className="btn btn-primary">
                                 Learn More
