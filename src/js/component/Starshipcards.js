@@ -12,8 +12,9 @@ const StarshipCards = () => {
     }, [actions]);
 
     return (
-        <div className="row" style={{ overflowX: "scroll" }}>
+        <div className="row">
             <h1>Starships</h1>
+            <div className="row flex-nowrap" style={{ overflowX: "auto", maxWidth: "100vw" }}>
             {store.starships && store.starships.length > 0 ? (
                 store.starships.map((starship, index) => (
                     <div key={index} className="card" style={{ width: "18rem" }}>
@@ -38,6 +39,7 @@ const StarshipCards = () => {
             ) : (
                 <div>Loading starships...</div> 
             )}
+        </div>
         </div>
     );
 };

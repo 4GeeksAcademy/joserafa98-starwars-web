@@ -7,8 +7,8 @@ import StarshipCards from "../component/Starshipcards";
 
 export const Home = () => (
 	<>
-	<StarwarsCards></StarwarsCards>
-	<PlanetCards></PlanetCards>
-	<StarshipCards></StarshipCards>
+	<StarwarsCards/>
+	<PlanetCards/>
+	<StarshipCards/>
 	</>
 );

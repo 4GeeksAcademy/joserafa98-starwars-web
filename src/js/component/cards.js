@@ -10,10 +10,13 @@ const StarwarsCards = () => {
     }, [actions]);
 
     return (
-        <div className="row" style={{ overflowX: "scroll" }}>
-            <h1>Characters</h1>
+        <>
+        <div className="container">
+        <h1>Characters</h1>
+        <div className="row flex-nowrap" style={{ overflowX: "auto", maxWidth: "100vw" }}>
             {store.characters && store.characters.length > 0 ? (
                 store.characters.map((character, index) => (
+                    <div className="col-12 col-md-6 col-lg-3" key={index}>
                     <div key={index} className="card" style={{ width: "18rem" }}>
                         <img
                             src={`https://starwars-visualguide.com/assets/img/characters/${character.uid}.jpg`} 
@@ -36,11 +39,14 @@ const StarwarsCards = () => {
                             </Link>
                         </div>
                     </div>
+                    </div>   
                 ))
             ) : (
                 <div>Loading characters...</div>
             )}
         </div>
+        </div> 
+        </>
     );
 };
 
