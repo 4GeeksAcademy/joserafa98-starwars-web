@@ -15,6 +15,7 @@ const PlanetCards = () => {
             <div className="row flex-nowrap" style={{ overflowX: "auto", maxWidth: "100vw" }}>
             {store.planets && store.planets.length > 0 ? (
                 store.planets.map((planet, index) => ( 
+                    <div className="col-12 col-md-6 col-lg-3" key={index}>
                     <div key={index} className="card" style={{ width: "18rem" }}>
                         <img
                             src={`https://starwars-visualguide.com/assets/img/planets/${planet.uid}.jpg`} 
@@ -36,6 +37,7 @@ const PlanetCards = () => {
                                 <i className="fa-regular fa-heart"></i>
                             </button>
                         </div>
+                    </div>
                     </div>
                 ))
             ) : (

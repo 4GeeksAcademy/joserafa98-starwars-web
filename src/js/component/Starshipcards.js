@@ -17,6 +17,7 @@ const StarshipCards = () => {
             <div className="row flex-nowrap" style={{ overflowX: "auto", maxWidth: "100vw" }}>
             {store.starships && store.starships.length > 0 ? (
                 store.starships.map((starship, index) => (
+                    <div className="col-12 col-md-6 col-lg-3" key={index}>
                     <div key={index} className="card" style={{ width: "18rem" }}>
                         <img
                             src={`https://starwars-visualguide.com/assets/img/starships/${starship.uid}.jpg`} 
@@ -34,6 +35,7 @@ const StarshipCards = () => {
                                 <i className="fa-regular fa-heart"></i>
                             </button>
                         </div>
+                    </div>
                     </div>
                 ))
             ) : (
