@@ -13,7 +13,7 @@ const StarwarsCards = () => {
         <>
         <div className="container">
         <h1>Characters</h1>
-        <div className="row flex-nowrap" style={{ overflowX: "auto", maxWidth: "100vw" }}>
+        <div className="row flex-nowrap" style={{ overflowX: "auto", maxWidth: "100vw", maxHeight:"5000rem"}}>
             {store.characters && store.characters.length > 0 ? (
                 store.characters.map((character, index) => (
                     <div className="col-12 col-md-6 col-lg-3" key={index}>
