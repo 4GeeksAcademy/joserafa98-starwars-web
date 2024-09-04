@@ -48,61 +48,90 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const data = await response.json();
 					const results = data.results;
 			
-					const characterPromises = results.map(async (result) => {
-						const characterResponse = await fetch(`https://www.swapi.tech/api/people/${result.uid}`);
-						const characterData = await characterResponse.json();
-						return characterData.result;
-					});
+					const characters = [];
+					const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms)); 
 			
-					const characters = await Promise.all(characterPromises);
+					for (let i = 0; i < results.length; i++) {
+						try {
+							const characterResponse = await fetch(`https://www.swapi.tech/api/people/${results[i].uid}`);
+							if (!characterResponse.ok) {
+								throw new Error(`Failed to fetch character with uid: ${results[i].uid}`);
+							}
+							const characterData = await characterResponse.json();
+							characters.push(characterData.result);
+			
+							await delay(1000); 
+						} catch (error) {
+							console.error("Error fetching character:", error);
+						}
+					}
+			
 					setStore({ characters });
 				} catch (error) {
 					console.error("Error fetching characters:", error);
 				}
 			},
+			
 			loadPlanets: async () => {
 				try {
 					const response = await fetch('https://www.swapi.tech/api/planets/');
-					if (!response.ok) throw new Error("Failed to fetch planets list");
-			
 					const data = await response.json();
 					const results = data.results;
-					console.log('Results:', results);
 			
-					const planetPromises = results.map(async (result) => {
-						const planetResponse = await fetch(`https://www.swapi.tech/api/planets/${result.uid}`);
-						if (!planetResponse.ok) throw new Error(`Failed to fetch planet with uid: ${result.uid}`);
+					const planets = [];
+					const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms)); 
 			
-						const planetData = await planetResponse.json();
-						return planetData.result;
-					});
+					for (let i = 0; i < results.length; i++) {
+						try {
+							const planetResponse = await fetch(`https://www.swapi.tech/api/planets/${results[i].uid}`);
+							if (!planetResponse.ok) {
+								throw new Error(`Failed to fetch planet with uid: ${results[i].uid}`);
+							}
+							const planetData = await planetResponse.json();
+							planets.push(planetData.result);
 			
-					const planets = await Promise.all(planetPromises);
-					console.log('Planets:', planets);
+							await delay(1000);
+						} catch (error) {
+							console.error("Error fetching planet:", error);
+						}
+					}
 			
 					setStore({ planets });
 				} catch (error) {
 					console.error("Error fetching planets:", error);
 				}
 			},
+			
 			loadStarships: async () => {
 				try {
 					const response = await fetch('https://www.swapi.tech/api/starships');
 					const data = await response.json();
 					const results = data.results;
 			
-					const starshipPromises = results.map(async (result) => {
-						const starshipResponse = await fetch(`https://www.swapi.tech/api/starships/${result.uid}`);
-						const starshipData = await starshipResponse.json();
-						return starshipData.result;
-					});
+					const starships = [];
+					const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms)); 
 			
-					const starships = await Promise.all(starshipPromises);
+					for (let i = 0; i < results.length; i++) {
+						try {
+							const starshipResponse = await fetch(`https://www.swapi.tech/api/starships/${results[i].uid}`);
+							if (!starshipResponse.ok) {
+								throw new Error(`Failed to fetch starship with uid: ${results[i].uid}`);
+							}
+							const starshipData = await starshipResponse.json();
+							starships.push(starshipData.result);
+			
+							await delay(1000);
+						} catch (error) {
+							console.error("Error fetching starship:", error);
+						}
+					}
+			
 					setStore({ starships });
 				} catch (error) {
 					console.error("Error fetching starships:", error);
 				}
 			},
+			
 			
 			addCharacterFavorites: (character) => {
                 const store = getStore();
