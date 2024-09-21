@@ -1,7 +1,39 @@
 /* 
     General Styles
 */
+body{
+  background-color: black;
+}
+h1{
+  color: white;
+}
+h2{
+  color: white;
+}
+p{
+  color: white;
+}
+.card-text{
+  color: black;
+}
 
+#starwarslogo{
+  transform: scale(var(--escala, 1));
+  transition: transform 0.25s;
+}
+#starwarslogo:hover{
+  --escala: 1.2;
+  cursor:pointer;
+}
+
+.card{
+  transform: scale(var(--escala, 0.9));
+  transition: transform 0.25s;
+}
+.card:hover{
+  --escala: 1;
+  cursor:pointer;
+}
 #specialButton {
   padding: 17px 40px;
   border-radius: 50px;

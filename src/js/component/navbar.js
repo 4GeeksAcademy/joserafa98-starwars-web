@@ -5,11 +5,12 @@ import { Context } from "../store/appContext";
 export const Navbar = () => {
     const { store, actions } = useContext(Context);
     return (
-        <nav className="navbar navbar-light bg-light mb-3">
+        <nav className="navbar navbar-dark bg-dark mb-3">
             <Link to="/" className="navbar-brand mb-0  mx-5 h1">
             <img 
                 src="https://pngimg.com/d/star_wars_logo_PNG5.png" 
                 style={{ height: '100px', maxHeight: '50px' }} 
+                id="starwarslogo"
             />
 
             </Link>
