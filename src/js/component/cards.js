@@ -6,8 +6,10 @@ const StarwarsCards = () => {
     const { store, actions } = useContext(Context);
 
     useEffect(() => {
+        actions.loadCharactersFromLocalStorage();
         actions.loadCharacters(); 
-    }, [actions]);
+    }, []);
+    
 
     return (
         <>

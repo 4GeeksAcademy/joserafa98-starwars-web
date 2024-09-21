@@ -42,7 +42,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
-			loadCharacters: async () => {
+			loadCharacters: debounce(async () => {
 				try {
 					const response = await fetch('https://www.swapi.tech/api/people/');
 					const data = await response.json();
@@ -65,14 +65,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 							console.error("Error fetching character:", error);
 						}
 					}
-			
+					localStorage.setItem('characters', JSON.stringify(characters));
 					setStore({ characters });
 				} catch (error) {
 					console.error("Error fetching characters:", error);
 				}
+			}, 300),
+			
+
+			loadCharactersFromLocalStorage: () => {
+				const characters = JSON.parse(localStorage.getItem('characters'));
+				if (characters) {
+					setStore({ characters });
+				}
 			},
 			
-			loadPlanets: async () => {
+			loadPlanets: debounce(async () => {
 				try {
 					const response = await fetch('https://www.swapi.tech/api/planets/');
 					const data = await response.json();
@@ -95,14 +103,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 							console.error("Error fetching planet:", error);
 						}
 					}
-			
+					localStorage.setItem('planets', JSON.stringify(planets));
 					setStore({ planets });
 				} catch (error) {
 					console.error("Error fetching planets:", error);
 				}
-			},
+			}, 300),
 			
-			loadStarships: async () => {
+			loadPlanetsFromLocalStorage: () => {
+				const planets = JSON.parse(localStorage.getItem('planets'));
+				if (planets) {
+					setStore({ planets });
+				}
+			},
+
+			loadStarships: debounce(async () => {
 				try {
 					const response = await fetch('https://www.swapi.tech/api/starships');
 					const data = await response.json();
@@ -125,13 +140,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 							console.error("Error fetching starship:", error);
 						}
 					}
-			
+					localStorage.setItem('starships', JSON.stringify(starships));
 					setStore({ starships });
 				} catch (error) {
 					console.error("Error fetching starships:", error);
 				}
+			}, 300),			
+
+			loadStarshipsFromLocalStorage: () => {
+				const starships = JSON.parse(localStorage.getItem('starships'));
+				if (starships ) {
+					setStore({ starships });
+				}
 			},
-			
 			
 			addCharacterFavorites: (character) => {
                 const store = getStore();
@@ -149,5 +170,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 		}
 	};
 };
+function debounce(fn, delay) {
+    let timeoutId;
+    return function(...args) {
+        if (timeoutId) clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+            fn(...args);
+        }, delay);
+    };
+}
 
 export default getState;

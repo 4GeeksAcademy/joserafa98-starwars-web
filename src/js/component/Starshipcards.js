@@ -8,8 +8,9 @@ const StarshipCards = () => {
     const { store, actions } = useContext(Context);
 
     useEffect(() => {
+        actions.loadStarshipsFromLocalStorage();
         actions.loadStarships(); 
-    }, [actions]);
+    }, []);
 
     return (
         <div className="container">

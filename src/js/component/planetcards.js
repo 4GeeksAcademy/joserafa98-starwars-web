@@ -6,9 +6,11 @@ const PlanetCards = () => {
     const { store, actions } = useContext(Context);
 
     useEffect(() => {
+        actions.loadPlanetsFromLocalStorage();
         actions.loadPlanets(); 
-    }, [actions]);
-
+    }, []);
+    
+    
     return (
         <div className="container">
             <h1>Planets</h1>
