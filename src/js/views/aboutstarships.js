@@ -23,6 +23,7 @@ const AboutStarships = () => {
                     <img
                         src={`https://starwars-visualguide.com/assets/img/starships/${starship.uid}.jpg`}
                         className="card-img-top"
+                        id="Starship-shadow"
                         alt={starship.properties.name}
                         onError={(e) => {
                             e.target.onerror = null; 

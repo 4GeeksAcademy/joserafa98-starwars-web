@@ -21,6 +21,7 @@ const AboutPlanet = () => {
                     <img
                         src={`https://starwars-visualguide.com/assets/img/planets/${planet.uid}.jpg`} 
                         className="card-img-top"
+                        id="Planet-shadow"
                         alt={planet.properties.name}
                         onError={(e) => {
                             e.target.onerror = null; 

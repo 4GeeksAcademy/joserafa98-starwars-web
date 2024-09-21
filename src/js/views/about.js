@@ -24,6 +24,7 @@ export const About = () => {
                                 style={{ height: '700px', width:'700px', maxHeight: '5000px' }} 
                                 className="card-img-top"
                                 alt={character.name}
+                                id="Character-shadow"
                             />
                         </div>
                         
