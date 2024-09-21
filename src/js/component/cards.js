@@ -33,7 +33,7 @@ const StarwarsCards = () => {
                             <p className="card-text">
                                 Gender: {character.properties.gender || "Unknown"}
                             </p>
-                            <Link to={`/about/${character.uid}`} className="btn btn-primary">
+                            <Link to={`/about/${character.uid}`} className="btn btn-primary" id="specialButton">
                                 Learn More
                             </Link>
                             <Link to="#" className="btn btn-warning">
