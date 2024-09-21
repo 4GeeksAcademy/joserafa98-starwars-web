@@ -160,18 +160,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     setStore({ favorites: [...store.favorites, character] });
                 }
             },
-			addPlanetFavorites: (planet) => {
-                const store = getStore();
-                if (!store.favorites.some(fav => fav.uid === planet.uid)) {
-                    setStore({ favorites: [...store.favorites, planet] });
-                }
-            },
-			addStarshipFavorites: (starship) => {
-                const store = getStore();
-                if (!store.favorites.some(fav => fav.uid === starship.uid)) {
-                    setStore({ favorites: [...store.favorites, starship] });
-                }
-            },
+			
 
             removeCharacterFavorites: (characterId) => {
                 const store = getStore();
