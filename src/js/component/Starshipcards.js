@@ -24,17 +24,22 @@ const StarshipCards = () => {
                             src={`https://starwars-visualguide.com/assets/img/starships/${starship.uid}.jpg`} 
                             className="card-img-top"
                             alt={starship.properties.name}
+                            onError={(e) => {
+                                e.target.onerror = null; 
+                                e.target.src = 'https://i.pinimg.com/736x/88/53/f3/8853f3816ff02c08a68d2c665fef5c59.jpg';
+                            }}
                         />
                         <div className="card-body">
                             <h5 className="card-title">{starship.properties.name}</h5>
                             <p className="card-text">Model: {starship.properties.model || "Unknown"}</p>
                             <p className="card-text">Manufacturer: {starship.properties.manufacturer || "Unknown"}</p>
-                            <Link to={`/aboutstarships/${starship.uid}`} className="btn btn-primary">
+                            <Link to={`/aboutstarships/${starship.uid}`} className="btn btn-primary" id="specialButton">
                                 Learn More
                             </Link>
                             <button className="btn btn-warning" onClick={() => actions.addCharacterFavorites(starship)}>
                                 <i className="fa-regular fa-heart"></i>
                             </button>
+                            
                         </div>
                     </div>
                     </div>
