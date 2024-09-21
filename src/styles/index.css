@@ -67,6 +67,7 @@ p{
   text-transform: uppercase;
   font-size: 15px;
   transition: all 0.5s ease;
+  margin-bottom: 10px;
 }
 
 #specialButton:hover {
@@ -83,4 +84,92 @@ p{
   box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
   transform: translateY(10px);
   transition: 100ms;
+}
+/* From Uiverse.io by SalladShooter */ 
+.like-wrapper {
+  --gap: 0.5em;
+  --radius: 0.35em;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  --dot-bg: #212121;
+  --dot-color: #313131;
+  --dot-size: 1px;
+  --dot-space: 22px;
+  background: linear-gradient(
+        90deg,
+        var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
+        transparent 1%
+      )
+      center / var(--dot-space) var(--dot-space),
+    linear-gradient(
+        var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
+        transparent 1%
+      )
+      center / var(--dot-space) var(--dot-space),
+    var(--dot-color);
+  border: 0.1em solid #313131;
+  padding: 0.5em;
+  border-radius: var(--radius);
+  box-shadow: 0 0 1em 0.5em rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.check[type="checkbox"] {
+  display: none;
+}
+
+#likebutton {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-top: -0.25em;
+  margin-bottom: -0.25em;
+}
+
+.icon {
+  width: 1.5em;
+  height: 1.5em;
+  margin-left: 0.5em;
+  fill: white;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.icon.active {
+  display: none;
+  fill: #f52121;
+}
+
+.check[type="checkbox"]:checked + .container .icon.active {
+  display: inline-block;
+  animation: wiggle 0.5s ease-in-out;
+}
+
+.check[type="checkbox"]:checked + .container .icon.inactive {
+  display: none;
+}
+
+.like-text {
+  margin-left: 0.5em;
+  padding: 0.5em;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-weight: bolder;
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
 }
